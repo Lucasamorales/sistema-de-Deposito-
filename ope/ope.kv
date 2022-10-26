@@ -1,0 +1,169 @@
+<FlatButton@ButtonBehavior+Label>:
+    font_size: 14
+
+<OpeWindow>:
+    id: main_win
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba: (1,1,1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos    
+    BoxLayout:
+        id: header
+        size_hint_y: None
+        height: 40
+        canvas.before:
+            Color:
+                rgba: (.06,.45,.45, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text: "Sistema de Pago"
+            size_hint_x: .9
+            bold:True
+            color:(1,1,1, 1)
+        FlatButton:
+            id: loggedin_user
+            text: "lucas"
+            color:(1,1,1, 1)
+    
+    BoxLayout:
+        id: current
+        size_hint_y:None
+        height:50
+        canvas.before:
+            Color:
+                rgba: (1,1,1, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Button: 
+            text:" Producto Actual"
+            background_normal:""
+            background_color:(.06,.32,.32, 1)
+            size_hint_x: .4
+            
+        Button:
+            id: cur_product
+            text: "Producto por defecto"
+            background_normal:""
+            background_color:(.06,.4,.4, 1)
+        Button:
+            id: cur_price
+            text:"0.00"
+            background_normal:""
+            background_color:(.06,.65,.65, 1)
+            size_hint_x:.2
+    BoxLayout:
+        padding: 10
+        BoxLayout:
+            id: product_details
+            orientation: "vertical"
+            size_hint_x: .8
+            spacing:10
+
+            BoxLayout:
+                id: product_labels
+                size_hint_y: None
+                height: 40
+                canvas.before:
+                    Color:
+                        rgba: (.06,.45,.45, 1)
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                FlatButton:
+                    text: "Cant."
+                    size_hint_x: .1
+                FlatButton:
+                    text: "Codigo de Producto"
+                    size_hint_x: .3
+                FlatButton:
+                    text: "Desct."
+                    size_hint_x: .1
+                FlatButton:
+                    text: "% Desct."
+                    size_hint_x: .1
+                FlatButton:
+                    text: "Precio"
+                    size_hint_x: .2
+                FlatButton:
+                    text: "Total"
+                    size_hint_x: .2
+            BoxLayout:
+                id: products_inputs
+                size_hint_y: None
+                height: 30
+                spacing: 5
+                TextInput:
+                    id: cant_input
+                    size_hint_x: .1
+                TextInput:
+                    id: code_input
+                    size_hint_x: .3
+                    multiline: False
+                    on_text_validate: root.update_purchases()
+                TextInput:
+                    id: desc_input
+                    size_hint_x: .1
+                TextInput:
+                    id: desc_perc_input
+                    size_hint_x: .1
+                TextInput:
+                    id: price_input
+                    size_hint_x: .2
+                TextInput:
+                    id: Total_input
+                    size_hint_x: .2    
+            BoxLayout:
+                id: add_to_cart
+                orientation:"vertical"
+                BoxLayout:
+                    size_hint_y: None
+                    height: 30
+                    canvas.before:
+                        Color:
+                            rgba: (.06,.45,.45, 1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    Label:
+                        text:"Codigo"
+                        size_hint_x: .2
+                    Label:
+                        text:"Nombre del Producto" 
+                        size_hint_x: .3
+                    Label:
+                        text:"Cant."
+                        size_hint_x: .1
+                    Label:
+                        text:"Desc."
+                        size_hint_x: .1
+                    Label:
+                        text:"Precio."
+                        size_hint_x: .1
+                    Label:
+                        text:"Total" 
+                        size_hint_x: .2
+                GridLayout:
+                    id: products 
+                    cols: 1
+
+            
+        
+        
+        BoxLayout:
+            id: preview
+            orientation: "vertical"
+            size_hint_x: .2
+
+            TextInput:
+                id:receipt_preview
+                readonly: True
+                text: "nombre de la tienda\n123 Calle \n Provincia, Pais\n\nTel: (+54) -123-456\n Factura No: \nFecha: \n\n"
+
+            
+
